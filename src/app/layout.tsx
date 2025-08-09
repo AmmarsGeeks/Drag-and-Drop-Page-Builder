@@ -23,6 +23,7 @@ export default function RootLayout({ children }: LayoutProps) {
     <html lang="en">
       <body className={inter.className}>
         <DesignerProvider>
+              <FormProvider>
                       <NextTopLoader />
                       <ThemeProvider
                         attribute="class"
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: LayoutProps) {
                             {children}
                         <Toaster />
                     </ThemeProvider>
+              </FormProvider>
         </DesignerProvider>
 
        
