@@ -208,3 +208,70 @@ const FormContext = createContext<{
         return state;
     }
   }
+
+  export function FormProvider({ children }: { children: ReactNode }) {
+    // Initialize state from localStorage or with defaults
+    const [state, dispatch] = useReducer(formReducer, {
+      forms: [],
+      submissions: {},
+      pendingForms: {}
+    });
+  
+    // Load state from localStorage on initial render
+    useEffect(() => {
+      try {
+        const savedState = localStorage.getItem('form-builder-state');
+        if (savedState) {
+          const parsedState = JSON.parse(savedState);
+          
+          // Convert updatedAt strings to Date objects
+          const fixedForms = parsedState.forms.map((form: any) => ({
+            ...form,
+            updatedAt: form.updatedAt ? new Date(form.updatedAt) : new Date()
+          }));
+          
+          dispatch({
+            type: 'INIT_STATE',
+            payload: {
+              ...parsedState,
+              forms: fixedForms
+            }
+          });
+        }
+      } catch (error) {
+        console.error("Failed to load form builder state", error);
+        localStorage.removeItem('form-builder-state');
+      }
+    }, []);
+    
+    // Persist state to localStorage on changes
+    useEffect(() => {
+      try {
+        localStorage.setItem('form-builder-state', JSON.stringify(state));
+      } catch (error) {
+        console.error("Failed to save form builder state", error);
+      }
+    }, [state]);
+  
+    const exportFullState = () => {
+      return JSON.stringify(state, null, 2);
+    };
+  
+    return (
+      <FormContext.Provider value={{ 
+        state, 
+        dispatch,
+        exportFullState
+      }}>
+        {children}
+      </FormContext.Provider>
+    );
+  }
+
+  export function useFormContext() {
+    const context = useContext(FormContext);
+    if (!context) {
+      throw new Error('useFormContext must be used within a FormProvider');
+    }
+    return context;
+  }
