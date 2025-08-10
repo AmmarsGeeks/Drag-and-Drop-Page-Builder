@@ -23,7 +23,7 @@ export const Hero = () => (
         asChild
         className="mt-6 bg-ring/80 text-white hover:bg-ring/70"
       >
-        <Link href="/get-started">Start Building</Link>
+        <Link href="/dashboard">Start Building</Link>
       </Button>
     </div>
 

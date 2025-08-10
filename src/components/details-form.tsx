@@ -89,7 +89,7 @@ export const DetailsForm = ({
       });
       
       closeModal?.();
-      router.push(`/dashboard/builder/${newFormId}`);
+      router.push(`/dashboard`);
     } catch (error) {
       toast({
         title: "Error",
