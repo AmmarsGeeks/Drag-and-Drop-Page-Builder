@@ -98,6 +98,15 @@ To build and start the app container, run:
 
 Follow these steps to set up the application locally:
 
+## 🐳 Docker Installation
+
+### Option 1: Run from Docker Hub
+```bash
+docker pull ahammouch/form-builder:latest
+docker run -d -p 3000:3000 ahammouch/form-builder
+
+
+### Option 2: Build Locally (Dev)
 
 ### 1.Clone the repository:
 
