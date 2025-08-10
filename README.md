@@ -87,6 +87,13 @@ The application is built entirely frontend with no backend dependencies, making 
 - Git
 
 
+### Running the application with docker
+
+To build and start the app container, run:
+```bash
+ docker-compose up --build
+```
+
 ## Installation
 
 Follow these steps to set up the application locally:
