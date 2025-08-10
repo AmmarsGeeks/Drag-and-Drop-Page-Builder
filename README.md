@@ -1,4 +1,4 @@
-# Drag And Drop PAge Builder 
+# Drag And Drop Page Builder 
 
 Next.js and React application for building and managing dynamic forms with a drag-and-drop interface, state management, and import/export functionality.
 
@@ -98,22 +98,14 @@ To build and start the app container, run:
 
 Follow these steps to set up the application locally:
 
-## 🐳 Docker Installation
 
-### Option 1: Run from Docker Hub
-```bash
-docker pull ahammouch/form-builder:latest
-docker run -d -p 3000:3000 ahammouch/form-builder
-
-
-### Option 2: Build Locally (Dev)
 
 ### 1.Clone the repository:
 
 ```bash
  git clone https://github.com/your-username/form-builder.git
  cd form-builder
-```
+
 
 ### 2.Install dependencies:
 
