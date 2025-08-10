@@ -1,13 +1,15 @@
 import { LayoutElement } from "@/types/form-builder";
 import { useDesigner } from "@/hooks/use-designer";
+import { DesignerElementWrapper } from "../designer/designer-element-wrapper";
 
-export const LayoutComponent = ({
+// Renamed from LayoutComponent to LayoutFormComponent
+export const LayoutFormComponent = ({
   elementInstance,
 }: {
   elementInstance: LayoutElement;
 }) => {
   const { elements } = useDesigner();
-  const children = elements.filter(el => el.parentId === elementInstance.id);
+  const children = elements.filter(el => el?.parentId === elementInstance?.id);
   
   return (
     <div className={`layout-${elementInstance.layoutType} p-4 rounded-lg border`}>

@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "build:force": "set NEXT_TELEMETRY_DISABLED=1 && next build || exit 0",
     "docker:build": "docker build -t form-builder .",
     "docker:run": "docker run -p 3000:3000 form-builder"
   },

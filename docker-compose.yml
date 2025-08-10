@@ -2,15 +2,24 @@ version: '3.8'
 
 services:
   form-builder:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     container_name: form-builder
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
     volumes:
       - form-builder-data:/app/.next/cache
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
 volumes:
   form-builder-data:

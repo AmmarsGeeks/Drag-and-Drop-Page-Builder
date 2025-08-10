@@ -17,12 +17,17 @@ import { Input } from "./ui/input"
 import { Spinner } from "./ui/spinner"
 import { Textarea } from "./ui/textarea"
 import { useFormContext } from "@/context/form-context"
-import { formSchema, type FormData } from "@/schemas/form" // Make sure this import exists
+import { formSchema, type FormData } from "@/schemas/form"
 import { generateId } from "@/lib/utils"
 
-type DetailsFromProps =
-  | { defaultValues: Readonly<{ id: number; name: string; description: string }>; closeModal: () => void }
-  | { defaultValues?: never; closeModal?: never }
+type DetailsFromProps = {
+  closeModal?: () => void
+  defaultValues?: {
+    id?: number
+    name?: string
+    description?: string
+  }
+}
 
 export const DetailsForm = ({
   defaultValues,
@@ -31,49 +36,60 @@ export const DetailsForm = ({
   const { dispatch } = useFormContext();
   const router = useRouter();
   
-  // Initialize react-hook-form
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: defaultValues || {
-      name: "",
-      description: ""
+    defaultValues: {
+      name: defaultValues?.name || "",
+      description: defaultValues?.description || ""
     }
   });
 
   const onSubmit = async (data: FormData) => {
     try {
-      if (defaultValues) {
+      if (defaultValues?.id) {
+        // Update existing form
         dispatch({
           type: 'UPDATE_FORM_DETAILS',
           payload: {
             id: defaultValues.id,
             name: data.name,
-            description: data.description
+            description: data.description || ""
           }
         });
-  
-        toast({ title: "Success", description: "Form details updated successfully" });
+        
+        toast({ 
+          title: "Success", 
+          description: "Form details updated successfully" 
+        });
         closeModal?.();
         return;
       }
-  
-      const generatedIdIs = generateId();
+
+      // Create new form
+      const newFormId = Date.now();
+      const newShareId = generateId();
+      
       dispatch({
         type: 'CREATE_FORM',
         payload: {
           name: data.name,
-          description: data.description, // fixed from string literal
+          description: data.description || "",
           content: [],
           status: "DRAFT",
-          shareId: generatedIdIs,
+          shareId: newShareId,
           visits: 0,
           submissions: 0,
           updatedAt: new Date().toISOString()
         }
-      })
-  
-      toast({ title: "Success", description: "Form created successfully" });
-      closeModal?.(); // ✅ close dialog instead of router.push
+      });
+
+      toast({ 
+        title: "Success", 
+        description: "Form created successfully" 
+      });
+      
+      closeModal?.();
+      router.push(`/dashboard/builder/${newFormId}`);
     } catch (error) {
       toast({
         title: "Error",
