@@ -38,11 +38,22 @@ export const layoutFields = [
 
 export type Field = (typeof inputFields | typeof layoutFields)[number]
 
-export type FormElementInstance = {
+
+
+export type BaseFormElementInstance = {
   id: string
   type: Field
   extraAttributes?: Record<string, any>
 }
+
+export type LayoutElementInstance = BaseFormElementInstance & {
+  type: "Layout"
+  layoutType: "header" | "hero" | "footer"
+  children?: string[] // Array of child element IDs
+}
+
+export type FormElementInstance = BaseFormElementInstance | LayoutElementInstance
+
 
 export type FormComponentProps = Readonly<{
   elementInstance: FormElementInstance

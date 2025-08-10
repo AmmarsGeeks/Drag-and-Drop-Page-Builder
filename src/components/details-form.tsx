@@ -75,7 +75,7 @@ export const DetailsForm = ({
           name: data.name,
           description: data.description || "",
           content: [],
-          status: "DRAFT" || "",
+          status: "DRAFT",
           shareId: newShareId,
           visits: 0,
           submissions: 0,
