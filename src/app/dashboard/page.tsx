@@ -1,16 +1,11 @@
 "use client"
+import { CreateFormDialog } from "@/components/dashboard/create-form-dialog"
+import { FormCard } from "@/components/dashboard/form-card"
+import { Separator } from "@/components/ui/separator"
+import { useFormContext } from "@/context/form-context"
 
 export default function DashboardPage() {
-  // Dummy state to replace useFormContext
-  const state = {
-    forms: [
-      { id: 1, title: "Form A", visits: 10, submissions: 5 },
-      { id: 2, title: "Form B", visits: 20, submissions: 10 }
-    ],
-    pendingForms: {
-      3: { id: 3, title: "Form C (Pending)", visits: 0, submissions: 0 }
-    }
-  };
+  const { state } = useFormContext();
   
   const allForms = [
     ...state.forms,
@@ -30,26 +25,14 @@ export default function DashboardPage() {
   }
 
   return (
-    <section style={{ padding: "1rem" }}>
-      <hr style={{ margin: "1rem 0" }} />
-      <h2>Your Forms</h2>
-      <hr style={{ margin: "1rem 0" }} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem" }}>
-        {/* Create Form Button */}
-        <button style={{ padding: "0.5rem", background: "#eee", border: "1px solid #ccc", borderRadius: "4px" }}>
-          + Create Form
-        </button>
-        
-        {/* Render forms */}
+    <section className="container py-4">
+      <Separator className="my-6" />
+      <h2 className="col-span-2">Your Forms</h2>
+      <Separator className="my-6" />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <CreateFormDialog />
         {allForms.map((form) => (
-          <div 
-            key={form.id} 
-            style={{ border: "1px solid #ccc", borderRadius: "4px", padding: "1rem" }}
-          >
-            <h3>{form.title}</h3>
-            <p>Visits: {form.visits}</p>
-            <p>Submissions: {form.submissions}</p>
-          </div>
+          <FormCard key={form.id} {...form} />
         ))}
       </div>
     </section>
