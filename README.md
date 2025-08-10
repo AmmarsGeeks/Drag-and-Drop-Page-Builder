@@ -229,6 +229,9 @@ Form preview in published state
 
 ## Demo
 
+Live Demo:
+[https://drag-and-drop-page-builder-uoai.vercel.app/]
+
 Check out the live demo of the form builder:  
 [https://jumpshare.com/s/D0t7ZDh04H2XfnaKKLlr](https://jumpshare.com/s/D0t7ZDh04H2XfnaKKLlr)
 
@@ -248,4 +251,3 @@ The demo shows:
 
 ## License
     This project is licensed under the MIT License
-
