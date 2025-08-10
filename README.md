@@ -192,7 +192,7 @@ form-builder/
 
 #### Dashboard View
 
-![image](https://github.com/user-attachments/assets/98d4bcec-c35a-4b6a-b227-0076cfc0dcae)
+![Dashboard](https://i.ibb.co/mnswM86/Screenshot-1447-02-16-at-3-35-14-AM.png)
 
 Overview of all forms with statistics
 
@@ -200,27 +200,30 @@ Overview of all forms with statistics
 
 #### Form Builder
 
-![Dashboard Empty](https://i.ibb.co/PsJwkDdT/Screenshot-1446-11-25-at-11-39-42-AM.png)
+![Form Builder](https://i.ibb.co/x88t2LBZ/Screenshot-1447-02-16-at-3-36-09-AM.png)
 
 Drag-and-drop interface for creating forms
 
 
-#### Published Form
+#### Preview
 
-![image](https://github.com/user-attachments/assets/98d4bcec-c35a-4b6a-b227-0076cfc0dcae)
-Form preview in published state
-
-#### Form Details
-
-![image](https://github.com/user-attachments/assets/98d4bcec-c35a-4b6a-b227-0076cfc0dcae)
+![image](https://i.ibb.co/VW2VpnZc/Screenshot-1447-02-16-at-3-37-06-AM.png)
 
 Detailed view of form submissions and statistics
 
+
+#### Published Form
+
+![image](https://i.ibb.co/JF26Y6M7/Screenshot-1447-02-16-at-3-38-22-AM.png)
+Form preview in published state
 
 
 
 
 ## Demo
+
+Check out the live demo of the form builder:  
+[https://jumpshare.com/s/D0t7ZDh04H2XfnaKKLlr](https://jumpshare.com/s/D0t7ZDh04H2XfnaKKLlr)
 
 The demo shows:
 
