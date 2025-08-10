@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  form-builder:
+    build: .
+    container_name: form-builder
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - form-builder-data:/app/.next/cache
+    restart: unless-stopped
+
+volumes:
+  form-builder-data:
