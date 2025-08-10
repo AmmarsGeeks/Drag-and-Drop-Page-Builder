@@ -62,7 +62,7 @@ export const DetailsForm = ({
         type: 'CREATE_FORM',
         payload: {
           name: data.name,
-          description: data.description, // fixed from string literal
+          description: data.description, 
           content: [],
           status: "DRAFT",
           shareId: generatedIdIs,
