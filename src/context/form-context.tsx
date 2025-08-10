@@ -29,7 +29,19 @@ type FormState = {
 
 type Action =
   | { type: 'INIT_STATE'; payload: FormState }
-  | { type: 'CREATE_FORM'; payload: Omit<Form, 'id' | 'status' | 'shareId' | 'visits' | 'submissions' | 'updatedAt'> }
+  |{
+    type: 'CREATE_FORM';
+    payload: {
+      name: string;
+      description: string;
+      content: FormElementInstance[];
+      status: FormStatus; // Must match the type exactly
+      shareId: string;
+      visits: number;
+      submissions: number;
+      updatedAt: string;
+    }
+  }
   | { type: 'ADD_PENDING_FORM'; payload: Form } // Add form to pending state
   | { type: 'CONFIRM_FORM_CREATION'; payload: { id: number } } // Move pending form to forms
   | { type: 'UPDATE_FORM_CONTENT'; payload: { id: number; content: FormElementInstance[] } }
